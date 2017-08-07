@@ -17,6 +17,7 @@ $server->on('message', function (swoole_websocket_server $server, $frame) {
     $redis = new Redis();
     $redis_client = $redis->getInstance();
     $data = json_decode($data);
+    var_dump($data);
     switch ($data['type']){
         case 'start':{
             if ($data['role'] == 'student'){
