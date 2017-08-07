@@ -12,7 +12,8 @@ class Redis
     public function __construct($config='')
     {
         $single_server = array(
-            'host' => '123.56.0.88',
+            'host' => '127.0.0.1',
+//            'host' => '123.56.0.88',
             'port' => 6379,
         );
         $this->client = new Predis\Client($single_server + array('read_write_timeout' => 0));
