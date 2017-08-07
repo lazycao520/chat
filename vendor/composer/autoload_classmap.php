@@ -6,4 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Bootstrap' => $baseDir . '/class/Bootstrap.php',
+    'Message' => $baseDir . '/class/Message.php',
+    'Redis' => $baseDir . '/class/Redis.php',
 );

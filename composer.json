@@ -11,5 +11,11 @@
     "require": {
         "predis/predis": "^1.0",
         "fuel/orm": "1.8.*"
-    }
+    },
+     "autoload": {
+         "classmap": [
+             "class"
+         ]
+     }
+
 }

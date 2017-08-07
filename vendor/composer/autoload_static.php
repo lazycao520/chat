@@ -28,11 +28,18 @@ class ComposerStaticInit937a27d6fe1053863ec6c3fde00af373
         ),
     );
 
+    public static $classMap = array (
+        'Bootstrap' => __DIR__ . '/../..' . '/class/Bootstrap.php',
+        'Message' => __DIR__ . '/../..' . '/class/Message.php',
+        'Redis' => __DIR__ . '/../..' . '/class/Redis.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit937a27d6fe1053863ec6c3fde00af373::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit937a27d6fe1053863ec6c3fde00af373::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit937a27d6fe1053863ec6c3fde00af373::$classMap;
 
         }, null, ClassLoader::class);
     }
