@@ -14,9 +14,10 @@ $server->on('message', function (swoole_websocket_server $server, $frame) {
     echo("有用户发送信息 \n");
     $data = $frame->data;
     //开始数据
+    var_dump($data);
     $redis = new Redis();
     $redis_client = $redis->getInstance();
-    $data = json_decode($data);
+    $data = json_decode($data,true);
     var_dump($data);
     switch ($data['type']){
         case 'start':{
