@@ -1,0 +1,15 @@
+{
+    "name": "lazycao/chat",
+    "description": "mit",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lazycao",
+            "email": "lazycao@qq.com"
+        }
+    ],
+    "require": {
+        "predis/predis": "^1.0",
+        "fuel/orm": "1.8.*"
+    }
+}
