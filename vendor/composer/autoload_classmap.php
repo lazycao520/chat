@@ -9,5 +9,5 @@ return array(
     'App' => $baseDir . '/class/App.php',
     'Bootstrap' => $baseDir . '/class/Bootstrap.php',
     'Message' => $baseDir . '/class/Message.php',
-    'Redis' => $baseDir . '/class/Redis.php',
+    'PRedis' => $baseDir . '/class/PRedis.php',
 );

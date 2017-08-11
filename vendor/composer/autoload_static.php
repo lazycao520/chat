@@ -32,7 +32,7 @@ class ComposerStaticInit937a27d6fe1053863ec6c3fde00af373
         'App' => __DIR__ . '/../..' . '/class/App.php',
         'Bootstrap' => __DIR__ . '/../..' . '/class/Bootstrap.php',
         'Message' => __DIR__ . '/../..' . '/class/Message.php',
-        'Redis' => __DIR__ . '/../..' . '/class/Redis.php',
+        'PRedis' => __DIR__ . '/../..' . '/class/PRedis.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
