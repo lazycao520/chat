@@ -214,7 +214,7 @@ class App
             break;
         }
     }
-    protected public function getUserInfo($user_id)
+    protected function getUserInfo($user_id)
     {
         return ['user_name'=>'lazycao','teacher_id':1];
     }
