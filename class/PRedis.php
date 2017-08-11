@@ -18,7 +18,7 @@ class PRedis
         );
         static::$_instance = new Predis\Client($single_server + array('read_write_timeout' => 0));
     }
-     final public static function getInstance(){
+    final public static function getInstance(){
         if(null !== static::$_instance){
             return static::$_instance;
         }
