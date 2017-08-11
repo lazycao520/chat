@@ -10,7 +10,7 @@ class App
 		if (empty($app)) {
 			return;
 		}else{
-			return call_user_method('getInstane', $app)
+			return call_user_func_array(array($app,'getInstane'),array());
 		}
 		
 	}

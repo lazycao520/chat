@@ -14,6 +14,16 @@ $server->on('message', function (swoole_websocket_server $server, $frame) {
     echo("有用户发送信息 \n");
     $data = $frame->data;
     //开始数据
+    $data = array(
+        'user_id'=>'',
+        'type' => 'start|info',
+        'role' => 'student|teacher',
+        'message'=>''
+    );
+    //教师登录，两个redis fd=>teacher_id techer_id=>hash()
+    //学员登录，两个redis fd=>user_id user_id=>hash(姓名)
+
+    //根据user_id获取，用户信息（教师id）
     var_dump($data);
     $redis = new Redis();
     $redis_client = $redis->getInstance();
