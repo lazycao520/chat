@@ -38,7 +38,7 @@ class App
         $redis -> hset ( 'hash_fd_'.$request->fd , 'host_ip' , $request->server['remote_addr'] ) ;
         echo "server: 有握手链接{$request->fd}\n";
     }
-}
+
     /**
     * 发送消息
     */
@@ -185,6 +185,8 @@ class App
             
             break;
         }
+    }
+
     /**
     * 断开连接
     */
@@ -216,6 +218,6 @@ class App
     }
     protected public function getUserInfo($user_id)
     {
-        return ['user_name'=>'lazycao','teacher_id':1];
+        return ['user_name'=>'lazycao','teacher_id'=>1];
     }
 }
