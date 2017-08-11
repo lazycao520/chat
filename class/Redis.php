@@ -18,7 +18,7 @@ class Redis
         );
         $this->client = new Predis\Client($single_server + array('read_write_timeout' => 0));
     }
-    function getInstance(){
+    public function getInstance(){
         return $this->client;
     }
 
