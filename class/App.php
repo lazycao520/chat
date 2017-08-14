@@ -11,7 +11,7 @@ class App
     protected $log_file = '';
     protected $log;
     protected function init(){
-        $this->log_file = __DIR__.'logs/chat_log_'.data('Y-m-d');
+        $this->log_file = __DIR__.'logs/chat_log_'.date('Y-m-d');
         $this->log = new Logger('chat');
         $this->log->pushHandler(new StreamHandler($this->log_file, Logger::WARNING));
     }
@@ -44,9 +44,11 @@ class App
             host_ip: 127.0.0.1
         }
         */
+        $this->init();
         $redis = static::getInstance('PRedis');
         $redis -> hset ( 'hash_fd_'.$request->fd , 'fd' , $request->fd ) ;
         $redis -> hset ( 'hash_fd_'.$request->fd , 'host_ip' , $request->server['remote_addr'] ) ;
+        $this->log->info('有握手链接');
         echo "server: 有握手链接{$request->fd}\n";
     }
 
@@ -125,6 +127,7 @@ class App
     */
         $data = $frame->data;
         $data = json_decode($data,true);
+        var_dump($data);
         switch ($data['type']) {
             case 'start':
                 switch ($data['role']) {
@@ -135,6 +138,7 @@ class App
                         $redis -> hset ( 'hash_fd_'.$frame->fd,'user_id',$user_id);
                             //根据user_id 获取用户信息
                         $user_info = $this->getUserInfo($user_id);
+
 
                             // 获取老师id，如果，根据老师id判断，kv_teacher_id 获取fd 老师是否在线 返回fd
 

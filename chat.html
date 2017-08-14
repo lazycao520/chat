@@ -136,7 +136,8 @@ var data = {"token": "cc", "role": "teacher", "message": "hello", "type": "start
             'type':'start',
             'role':role,
             'user_id':user_id,
-            'user_name': user_name
+            'user_name': user_name,
+            'teacher_id': user_name,
         }
         data = JSON.stringify(data);
         doSend(data);
