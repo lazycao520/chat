@@ -137,7 +137,8 @@ class App
                         $redis -> hset ( 'hash_fd_'.$frame->fd,'role','student');
                         $redis -> hset ( 'hash_fd_'.$frame->fd,'user_id',$user_id);
                             //根据user_id 获取用户信息
-                        $user_info = $this->getUserInfo($user_id);
+//                        $user_info = $this->getUserInfo($user_id);
+                        $user_info = UserController::getTeacher($user_id);
 
 
                             // 获取老师id，如果，根据老师id判断，kv_teacher_id 获取fd 老师是否在线 返回fd
@@ -231,9 +232,5 @@ class App
 
             break;
         }
-    }
-    protected function getUserInfo($user_id)
-    {
-        return ['user_name'=>'lazycao','teacher_id'=>1];
     }
 }
