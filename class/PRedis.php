@@ -22,7 +22,12 @@ class PRedis
         if(null !== static::$_instance){
             return static::$_instance;
         }
-        static::$_instance = new PRedis();
+        $single_server = array(
+            'host' => '127.0.0.1',
+//            'host' => '123.56.0.88',
+            'port' => 6379,
+        );
+        static::$_instance = new Predis\Client($single_server + array('read_write_timeout' => 0));
         return static::$_instance;
     }
     public function get(){

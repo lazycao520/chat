@@ -1,10 +1,21 @@
 <?php
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 /**
 * app
 */
 class App
 {
-	protected static $_instance = [];
+    protected static $_instance = [];
+
+    protected $log_file = '';
+    protected $log;
+    protected function init(){
+        $this->log_file = __DIR__.'logs/chat_log_'.data('Y-m-d');
+        $this->log = new Logger('chat');
+        $this->log->pushHandler(new StreamHandler($this->log_file, Logger::WARNING));
+    }
+	
 
 	public static function getInstance($app='')
 	{
@@ -33,7 +44,7 @@ class App
             host_ip: 127.0.0.1
         }
         */
-        $redis = static::getInstance('predis');
+        $redis = static::getInstance('PRedis');
         $redis -> hset ( 'hash_fd_'.$request->fd , 'fd' , $request->fd ) ;
         $redis -> hset ( 'hash_fd_'.$request->fd , 'host_ip' , $request->server['remote_addr'] ) ;
         echo "server: 有握手链接{$request->fd}\n";
@@ -100,8 +111,9 @@ class App
             }
         }
         */
+        $this->init();
 
-        $redis = static::getInstance('predis');
+        $redis = static::getInstance('PRedis');
     /*
         data = {
             type:[start|info|stop],
@@ -191,7 +203,7 @@ class App
     * 断开连接
     */
     function close($ser, $fd){
-        $redis = static::getInstance('predis');
+        $redis = static::getInstance('PRedis');
         $user_role = $redis->hget ( 'hash_fd_'.$fd,'role');
         $user_id = $redis->hget ( 'hash_fd_'.$fd,'user_id');
         $this->clearRedis($user_id,$user_role);
@@ -199,17 +211,17 @@ class App
 
     public function clearRedis($user_id,$type)
     {
-        $redis = static::getInstance('predis');
+        $redis = static::getInstance('PRedis');
         switch ($type) {
             case 'student':
                 $fd = $redis->hget ( 'hash_student_'.$user_id,'fd');
-                $redis->hdel('hash_student_'.$user_id);
-                $redis->hdel('hash_fd_'.$fd); 
+                $redis->del('hash_student_'.$user_id);
+                $redis->del('hash_fd_'.$fd); 
                 break;
             case 'teacher':
                 $fd = $redis->get ('kv_teacher_'.$user_id);
                 $redis->del('kv_teacher_'.$user_id);
-                $redis->hdel('hash_fd_'.$fd); 
+                $redis->del('hash_fd_'.$fd); 
                 break;
             default:
 
