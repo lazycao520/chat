@@ -10,7 +10,8 @@
     ],
     "require": {
         "predis/predis": "^1.0",
-        "fuel/orm": "1.8.*"
+        "fuel/orm": "1.8.*",
+        "monolog/monolog": "^1.0"
     },
      "autoload": {
          "classmap": [
