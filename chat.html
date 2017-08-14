@@ -51,14 +51,20 @@
 <div class="container">
     <div class="chat">
         <div class="top">
-            
+            <select name="role" id="role">
+                <option value="student">学生</option>
+                <option value="teacher">老师</option>
+                <input type="text" name="user_name" id="user_name">
+                <input type="text" name="user_id" id="user_id">
+                <input type="button" name="submit" value="确定" id="start_send">
+            </select>
         </div>
         <div class="content">
         
         </div>
         <div class="send">
-                <textarea></textarea>
-                <button>发送</button>
+                <textarea id="content"></textarea>
+                <button id="send_info">发送</button>
         </div>
     </div>
 </div>
@@ -93,7 +99,7 @@ var data = {"token": "cc", "role": "teacher", "message": "hello", "type": "start
  
     function onOpen(evt) { 
         writeToScreen("CONNECTED"); 
-        doSend(JSON.stringify(data)); 
+        // doSend(JSON.stringify(data)); 
     }  
  
     function onClose(evt) { 
@@ -119,7 +125,32 @@ var data = {"token": "cc", "role": "teacher", "message": "hello", "type": "start
         pre.style.wordWrap = "break-word"; 
         pre.innerHTML = message; 
         output.appendChild(pre); 
-    }  
-     window.addEventListener("load", init, false);  
+    }
+
+    window.addEventListener("load", init, false);
+     document.getElementById('start_send').addEventListener('click',function(){
+        var role = document.getElementById('role').value;
+        var user_name = document.getElementById('user_name').value;
+        var user_id = document.getElementById('user_id').value;
+        var data = {
+            'type':'start',
+            'role':role,
+            'user_id':user_id,
+            'user_name': user_name
+        }
+        data = JSON.stringify(data);
+        doSend(data);
+     })
+     document.getElementById('send_info').addEventListener('click',function(){
+        var role = document.getElementById('content').value;
+        var user_id = document.getElementById('user_id').value;
+        var data = {
+            'type': 'info',
+            'role':role,
+            'user_id':user_id,
+        }
+        data = JSON.stringify(data);
+        doSend(data);
+     })
 </script>  
 </html>
