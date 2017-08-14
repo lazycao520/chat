@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit937a27d6fe1053863ec6c3fde00af373
 {
+    public static $files = array (
+        'c7359326b6707d98bdc176bf9ddeaebf' => __DIR__ . '/..' . '/catfan/medoo/medoo.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'P' => 
         array (
@@ -15,10 +19,6 @@ class ComposerStaticInit937a27d6fe1053863ec6c3fde00af373
         'M' => 
         array (
             'Monolog\\' => 8,
-        ),
-        'C' => 
-        array (
-            'Composer\\Installers\\' => 20,
         ),
     );
 
@@ -35,10 +35,6 @@ class ComposerStaticInit937a27d6fe1053863ec6c3fde00af373
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Composer\\Installers\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
-        ),
     );
 
     public static $classMap = array (
@@ -46,6 +42,8 @@ class ComposerStaticInit937a27d6fe1053863ec6c3fde00af373
         'Bootstrap' => __DIR__ . '/../..' . '/class/Bootstrap.php',
         'Message' => __DIR__ . '/../..' . '/class/Message.php',
         'PRedis' => __DIR__ . '/../..' . '/class/PRedis.php',
+        'UserController' => __DIR__ . '/../..' . '/class/UserController.php',
+        'UserModel' => __DIR__ . '/../..' . '/class/UserModel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -10,4 +10,6 @@ return array(
     'Bootstrap' => $baseDir . '/class/Bootstrap.php',
     'Message' => $baseDir . '/class/Message.php',
     'PRedis' => $baseDir . '/class/PRedis.php',
+    'UserController' => $baseDir . '/class/UserController.php',
+    'UserModel' => $baseDir . '/class/UserModel.php',
 );

@@ -11,22 +11,12 @@ $config['redis'] = array(
 	);
 
 $config['database'] = array(
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => 'root',
-		'database' => 'game',
-		'dbdriver' => 'mysqli',
-		'dbprefix' => 'jb_',
-		'pconnect' => FALSE,
-		'cache_on' => FALSE,
-		'cachedir' => '',
-		'char_set' => 'utf8',
-		'dbcollat' => 'utf8_general_ci',
-		'swap_pre' => '',
-		'encrypt' => FALSE,
-		'compress' => FALSE,
-		'stricton' => FALSE,
-		'failover' => array(),
-		'save_queries' => TRUE
+    'server' => 'localhost',
+    'username' => 'root',
+    'password' => 'root',
+    'database_name' => 'game',
+    'database_type' => 'mysql',
+    'charset' => 'utf8',
+    'prefix' =>'jb_'
 	);
 return $config;
