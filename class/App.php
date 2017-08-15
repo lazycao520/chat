@@ -147,7 +147,7 @@ class App
                         $student_data = array(
                             'fd'            => $frame->fd,
                             'user_id'       => $user_id,
-                            'student_name'  => $user_info['user_name'], 
+                            'student_name'  => $user_info[0]['username'], 
                             'teacher_id'    => $user_info['teacher_id']
                         );
                         $redis -> hmset ('hash_student_'.$user_id,$student_data) ;  
@@ -173,7 +173,10 @@ class App
                                 //根据 hash_student_id 获取老师id，根据老师id 获取老师fd
                         $teacher_id = $redis->hget ( 'hash_student_'.$user_id,'teacher_id');
                         $fd = $redis->get('kv_teacher_'.$teacher_id);
-                        $server->push($message,$fd);         
+                        
+
+
+                        $server->push($fd,$message);         
                         break;  
                     case 'teacher':
                         $user_id = $data['user_id'];
@@ -183,7 +186,7 @@ class App
                                 //根据studnet_id 获取 fd
                         $fd = $redis->hget('hash_student_'.$student_id,'fd');
                         if ($fd) {
-                            $server->push($message,$fd);    
+                            $server->push($fd,$message);    
                         }else{
                             return;
                         }

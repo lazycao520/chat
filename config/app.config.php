@@ -11,8 +11,8 @@ $config['redis'] = array(
 	);
 
 $config['database'] = array(
-    'server' => 'localhost',
-    'username' => 'root',
+    'server' => '192.168.71.1',
+    'username' => 'cao',
     'password' => 'root',
     'database_name' => 'game',
     'database_type' => 'mysql',

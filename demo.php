@@ -7,7 +7,8 @@ $redis = new App();
 // $redis = PRedis::getInstance();
 var_dump($redis);*/
 
-
+$pdo = new PDO('mysql:host=localhost;dbname=mysql;port=3306','root','root');
+var_dump($pdo);exit();
 
 // create a log channel
 /*$log_path = './';

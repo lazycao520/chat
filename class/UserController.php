@@ -28,6 +28,7 @@ class UserController
         }
         $userinfo = $database->select('users','*',array('id'=>$student_id));
         $userinfo['teacher_id'] =$data1['teacher_id'];
+        var_dump($userinfo);
         return ($userinfo);
     }
 }
